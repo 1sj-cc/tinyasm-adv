@@ -6,14 +6,15 @@ public interface InvokerPrepare {
 	InvokerPrepare parameter(Clazz clazz);
 
 	default InvokerPrepare parameter(Class<?> clazz,boolean array) {
-		return parameter(TypeUtils.generic(clazz,array));
+		return parameter(Clazz.of(clazz, array));
 	}
 	default InvokerPrepare parameter(Class<?> clazz) {
-		return parameter(TypeUtils.generic(clazz));
+		return parameter(Clazz.of(clazz));
 	}
 
 	default InvokerPrepare parameter(String clazz) {
-		return parameter(TypeUtils.generic(clazz));
+		String[] genericParameterClazz = {};
+		return parameter(Clazz.of(clazz, genericParameterClazz));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -49,11 +50,12 @@ public interface InvokerPrepare {
 	Invoker returnObject(Clazz returnClazz);
 
 	default Invoker reTurn(Class<?> returnClazz) {
-		return returnObject(TypeUtils.generic(returnClazz));
+		return returnObject(Clazz.of(returnClazz));
 	}
 
 	default Invoker reTurn(String returnClazz) {
-		return returnObject(TypeUtils.generic(returnClazz));
+		String[] genericParameterClazz = {};
+		return returnObject(Clazz.of(returnClazz, genericParameterClazz));
 	}
 
 }

@@ -24,21 +24,23 @@ public interface Instance {
 	void pop();
 
 	default Instance checkcast(Class<?> clazz) {
-		return checkcast(TypeUtils.generic(clazz));
+		return checkcast(Clazz.of(clazz));
 	}
 
 	default Instance checkcast(String clazz) {
-		return checkcast(TypeUtils.generic(clazz));
+		String[] genericParameterClazz = {};
+		return checkcast(Clazz.of(clazz, genericParameterClazz));
 	}
 
 	Instance checkcastAndUnbox(Clazz clazz);
 
 	default Instance checkcastAndUnbox(Class<?> clazz) {
-		return checkcastAndUnbox(TypeUtils.generic(clazz));
+		return checkcastAndUnbox(Clazz.of(clazz));
 	}
 
 	default Instance checkcastAndUnbox(String clazz) {
-		return checkcastAndUnbox(TypeUtils.generic(clazz));
+		String[] genericParameterClazz = {};
+		return checkcastAndUnbox(Clazz.of(clazz, genericParameterClazz));
 	}
 
 	Instance checkcast(Clazz clazz);

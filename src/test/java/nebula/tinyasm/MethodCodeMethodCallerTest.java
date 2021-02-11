@@ -51,7 +51,8 @@ public class MethodCodeMethodCallerTest extends TestBase {
 			mv.define("i", int.class);
 			mv.define("l", Long.class);
 			mv.define("s", String.class);
-			mv.define("ls", TypeUtils.generic(List.class, String.class));
+			Class<?>[] genericParameterClazz = { String.class };
+			mv.define("ls", Clazz.of(List.class.getName(), TypeUtils.classnamesOf(genericParameterClazz)));
 
 			mv.LINE();
 			mv.LOADConstByte(10);

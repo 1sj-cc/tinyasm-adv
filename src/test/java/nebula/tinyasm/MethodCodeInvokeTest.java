@@ -42,7 +42,8 @@ public class MethodCodeInvokeTest extends TestBase {
 			mv.define("i", int.class);
 			mv.define("l", Long.class);
 			mv.define("s", String.class);
-			mv.define("ls", TypeUtils.generic(List.class, String.class));
+			Class<?>[] genericParameterClazz = { String.class };
+			mv.define("ls", Clazz.of(List.class.getName(), TypeUtils.classnamesOf(genericParameterClazz)));
 
 			mv.line().setConst("i", 10);
 			mv.line().clazz(Long.class).call("valueOf").parameter(long.class).reTurn(Long.class).invoke(p->p.LOADConst(Long.valueOf(10L))).setTo("l");
