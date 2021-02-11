@@ -51,7 +51,7 @@ public class InstanceImpl implements Instance {
 		assert arrayType.getSort() == Type.ARRAY;
 
 		mv.LOADConst(index);
-		mv.ARRAYLOAD(arrayType.getElementType());
+		mv.ARRAYLOAD();
 		return mv.topInstance();
 	}
 

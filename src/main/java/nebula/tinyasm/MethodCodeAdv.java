@@ -532,32 +532,30 @@ public abstract class MethodCodeAdv extends MethodCode implements MethodCodeFrie
 	public Instance arrayload(String arrayref, String index, Type valueType) {
 		LOAD(arrayref);
 		LOAD(index);
-		ARRAYLOAD(valueType);
+		ARRAYLOAD();
 		return topInstance();
 	}
 
 	public Instance arrayload(String arrayref, int index, Type valueType) {
 		LOAD(arrayref);
 		LOADConst(index);
-		ARRAYLOAD(valueType);
+		ARRAYLOAD();
 		return topInstance();
 	}
 
 	@Override
 	public Instance arrayload(String varArray, int index) {
 		load(varArray);
-		Type arrayType = stackTypeOf(0);
 		LOADConst(index);
-		ARRAYLOAD(arrayType.getElementType());
+		ARRAYLOAD();
 		return topInstance();
 	}
 
 	@Override
 	public Instance arrayload(String varArray, String varIndex) {
 		load(varArray);
-		Type arrayType = stackTypeOf(0);
 		load(varIndex);
-		ARRAYLOAD(arrayType.getElementType());
+		ARRAYLOAD();
 		return topInstance();
 	}
 
