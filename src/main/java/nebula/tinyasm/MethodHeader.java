@@ -2,6 +2,7 @@ package nebula.tinyasm;
 
 import java.util.function.Consumer;
 
+
 public interface MethodHeader extends WithAccess<MethodHeader>, WithReturn<MethodHeader>, WithThrow<MethodHeader>,
 		WithDefineParameter<MethodHeader>, WithAnnotation<MethodHeader> {
 	MethodCode begin();
@@ -9,6 +10,7 @@ public interface MethodHeader extends WithAccess<MethodHeader>, WithReturn<Metho
 	MethodHeader code(Consumer<MethodCode> invocation);
 
 	MethodHeader friendly(Consumer<MethodCodeAdv> invocation);
+
 	
 	
 //	void makeBridgeMathod();

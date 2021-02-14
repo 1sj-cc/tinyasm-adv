@@ -1,7 +1,6 @@
 package nebula.tinyasm;
 
 import static nebula.tinyasm.TypeUtils.every;
-import static nebula.tinyasm.TypeUtils.typeOf;
 import static org.objectweb.asm.Opcodes.ACC_BRIDGE;
 import static org.objectweb.asm.Opcodes.ACC_SYNTHETIC;
 
@@ -19,7 +18,7 @@ class MethodHeaderBuilder implements MethodHeader {
 
 		String methodName;
 
-		Type clazzType;
+		Clazz clazzType;
 		boolean hasEnded = false;
 		boolean instanceMethod = true;
 	}
@@ -46,17 +45,17 @@ class MethodHeaderBuilder implements MethodHeader {
 	final List<Clazz> exceptions = new ArrayList<>();
 	Clazz returnClazz = null;
 
-	public MethodHeaderBuilder(ClassBodyImpl cv, String className, int access, Clazz returnType, String methodName) {
-		this(cv, className, access, methodName);
+	public MethodHeaderBuilder(ClassBodyImpl cv, Clazz clazzType, int access, Clazz returnType, String methodName) {
+		this(cv, clazzType, access, methodName);
 		this.returnClazz = returnType;
 	}
 
-	public MethodHeaderBuilder(ClassBodyImpl cv, String className, int access, String methodName) {
+	public MethodHeaderBuilder(ClassBodyImpl cv, Clazz clazzType, int access, String methodName) {
 		this.classVisitor = cv;
 		thisMethod = new ThisMethod();
 		thisMethod.methodName = methodName;
+		thisMethod.clazzType = clazzType;
 		this.methodAccess = access;
-		thisMethod.clazzType = typeOf(className);
 		this.fields = cv.fields;
 		this.staticFields = cv.staticFields;
 	}
