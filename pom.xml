@@ -27,7 +27,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.ByronWang</groupId>
+			<groupId>com.github.1sj-cc</groupId>
 			<artifactId>tinyasm-core</artifactId>
 			<version>${tinyasm.version}</version>
 		</dependency>
