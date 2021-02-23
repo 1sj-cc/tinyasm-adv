@@ -164,7 +164,7 @@ class MethodHeaderBuilder implements MethodHeader {
 	}
 
 	MethodCode makeCode(MethodVisitor mv) {
-		return new MethodCodeBuilder(mv, this, mhLocals);
+		return new MethodCodeAdvBuilder(mv, this, mhLocals);
 	}
 
 	@Override

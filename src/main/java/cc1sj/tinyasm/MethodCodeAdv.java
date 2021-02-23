@@ -6,10 +6,15 @@ import java.util.function.Consumer;
 
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.Label;
+import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
-public abstract class MethodCodeAdv extends MethodCode implements MethodCodeFriendly {
+public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodCodeFriendly {
+
+	public MethodCodeAdv(MethodVisitor mv, MethodHeaderBuilder mh, LocalsStack locals) {
+		super(mv, mh, locals);
+	}
 
 	public MethodCodeAdv line() {
 		LINE();
