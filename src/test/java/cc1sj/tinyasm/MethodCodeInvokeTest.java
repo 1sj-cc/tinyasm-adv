@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import cc1sj.tinyasm.sample.ClassBody.MethodCodeMethodCallerSample;
 import cc1sj.tinyasm.sample.MethodCode.InvokeSample;
+import cc1sj.tinyasm.util.TinyAsmTestUtils;
 
 public class MethodCodeInvokeTest extends TestBase {
 
@@ -65,8 +66,8 @@ public class MethodCodeInvokeTest extends TestBase {
 
 		// @formatter:on
 
-		String codeActual = toString(cw.end().toByteArray());
-		String codeExpected = toString(clazz);
+		String codeActual = TinyAsmTestUtils.toString(cw.end().toByteArray());
+		String codeExpected = TinyAsmTestUtils.toString(clazz);
 		assertEquals("Code", codeExpected, codeActual);
 	}
 
@@ -241,8 +242,8 @@ public class MethodCodeInvokeTest extends TestBase {
 
 		// @formatter:on
 
-		String codeActual = toString(cw.end().toByteArray());
-		String codeExpected = toString(clazz);
+		String codeActual = TinyAsmTestUtils.toString(cw.end().toByteArray());
+		String codeExpected = TinyAsmTestUtils.toString(clazz);
 		assertEquals("Code", codeExpected, codeActual);
 	}
 

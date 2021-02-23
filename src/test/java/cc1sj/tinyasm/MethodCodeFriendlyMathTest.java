@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import cc1sj.tinyasm.util.TinyAsmTestUtils;
+
 public class MethodCodeFriendlyMathTest extends TestBase {
 
 	@Before
@@ -240,8 +242,8 @@ public class MethodCodeFriendlyMathTest extends TestBase {
 		});
 		// @formatter:on
 
-		String codeActual = toString(cw.end().toByteArray());
-		String codeExpected = toString(clazz);
+		String codeActual = TinyAsmTestUtils.toString(cw.end().toByteArray());
+		String codeExpected = TinyAsmTestUtils.toString(clazz);
 		assertEquals("Code", codeExpected, codeActual);
 	}
 //
