@@ -51,43 +51,43 @@ public class MethodCodeMethodCallerSimpleTest extends TestBase {
 				.clazz(Long.class)
 				.call("valueOf")
 				.parameter(long.class)
-				.reTurn(Long.class)
-				.invoke(m -> m.LOADConst(Long.valueOf(10L)))
+				.Return(Long.class)
+				.Invoke(m -> m.LOADConst(Long.valueOf(10L)))
 				.setTo("l");
 
 			mv.line()
 				.clazz(String.class)
 				.call("valueOf")
 				.parameter(int.class)
-				.reTurn(String.class)
-				.invoke(m -> m.LOAD(1))
+				.Return(String.class)
+				.Invoke(m -> m.LOAD(1))
 				.setTo("s");
 
 			// @formatter:off
 			mv.line().init(StringBuilder.class)
-				.virtual("append").parameter(String.class).reTurn(StringBuilder.class).invoke("s")
-				.virtual("append").reTurn(StringBuilder.class).invoke("i")
-				.virtual("append").parameter(Object.class).reTurn(StringBuilder.class).invoke("l")
-				.virtual("toString").reTurn(String.class).invoke()
+				.Virtual("append").parameter(String.class).Return(StringBuilder.class).invoke("s")
+				.Virtual("append").Return(StringBuilder.class).invoke("i")
+				.Virtual("append").parameter(Object.class).Return(StringBuilder.class).invoke("l")
+				.Virtual("toString").Return(String.class).Invoke()
 				.setTo("s");
 			// @formatter:on
 
 			mv.line().init(ArrayList.class).setTo("ls");
 
 			mv.line()
-				.load("ls")
-				.inter("add")
+				.Var("ls")
+				.Interface("add")
 				.parameter(Object.class)
-				.reTurn(boolean.class)
-				.invoke(m -> m.LOADConst("first"));
+				.Return(boolean.class)
+				.Invoke(m -> m.LOADConst("first"));
 			mv.POP();
 
 			mv.line()
-				.load("ls")
-				.inter("add")
+				.Var("ls")
+				.Interface("add")
 				.parameter(Object.class)
-				.reTurn(boolean.class)
-				.invoke(m -> m.LOADConst("second"));
+				.Return(boolean.class)
+				.Invoke(m -> m.LOADConst("second"));
 			mv.POP();
 
 			mv.line().returnVoid();

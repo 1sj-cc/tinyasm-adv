@@ -41,9 +41,9 @@ public class InvokerImpl implements InvokerPrepare, Invoker {
 	}
 
 	@Override
-	public void invokeVoid(String... varname) {
+	public void InvokeVoid(String... varname) {
 		for (String var : varname) {
-			mv.load(var);
+			mv.Var(var);
 			Type type = this.mv.stackTypeOf(0);
 			paramsActual.add(type);
 		}
@@ -101,7 +101,7 @@ public class InvokerImpl implements InvokerPrepare, Invoker {
 	@Override
 	public Instance invoke(String... varname) {
 		for (String string : varname) {
-			mv.load(string);
+			mv.Var(string);
 			paramsActual.add(mv.stackTypeOf(0));
 		}
 		Type[] params;
@@ -116,7 +116,7 @@ public class InvokerImpl implements InvokerPrepare, Invoker {
 	}
 
 	@Override
-	public Instance invoke() {
+	public Instance Invoke() {
 		mv.INVOKE(invokeType, objectType, returnClazz, methodName, new Type[0]);
 		return new InstanceImpl(mv, returnClazz);
 	}

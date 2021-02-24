@@ -16,6 +16,6 @@ public class CodeHelper {
 	}
 
 	public static Consumer<MethodCodeAdv> Var(String name) {
-		return p -> p.load(name);
+		return p -> p.Var(name);
 	}
 }

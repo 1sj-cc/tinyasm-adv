@@ -194,7 +194,7 @@ public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodC
 	}
 
 	@Override
-	public Instance load(String varname) {
+	public Instance Var(String varname) {
 		int local = codeLocalGetLocals(varname);
 		if (local >= 0) {
 			LOAD(local);
@@ -348,15 +348,15 @@ public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodC
 	@Override
 	@Deprecated
 	public Instance add(String left, String right) {
-		load(left);
-		load(right);
+		Var(left);
+		Var(right);
 		ADD();
 		return topInstance();
 	}
 
 	@Deprecated
 	public Instance add(String left, Consumer<MethodCodeAdv> right) {
-		load(left);
+		Var(left);
 		right.accept(this);
 		ADD();
 		return topInstance();
@@ -365,7 +365,7 @@ public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodC
 	@Deprecated
 	public Instance add(Consumer<MethodCodeAdv> left, String right) {
 		left.accept(this);
-		load(right);
+		Var(right);
 		ADD();
 		return topInstance();
 	}
@@ -550,7 +550,7 @@ public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodC
 
 	@Override
 	public Instance arrayload(String varArray, int index) {
-		load(varArray);
+		Var(varArray);
 		LOADConst(index);
 		ARRAYLOAD();
 		return topInstance();
@@ -558,8 +558,8 @@ public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodC
 
 	@Override
 	public Instance arrayload(String varArray, String varIndex) {
-		load(varArray);
-		load(varIndex);
+		Var(varArray);
+		Var(varIndex);
 		ARRAYLOAD();
 		return topInstance();
 	}
@@ -673,7 +673,7 @@ public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodC
 	public Instance init(String clazz, String... varnames) {
 		NEW(clazz);
 		DUP();
-		topInstance().special("<init>").invokeVoid(varnames);
+		topInstance().special("<init>").InvokeVoid(varnames);
 		return topInstance();
 	}
 
@@ -681,7 +681,7 @@ public abstract class MethodCodeAdv extends MethodCodeBuilder implements MethodC
 	public Instance init(Class<?> clazz, String... varnames) {
 		NEW(clazz);
 		DUP();
-		topInstance().special("<init>").invokeVoid(varnames);
+		topInstance().special("<init>").InvokeVoid(varnames);
 		return topInstance();
 	}
 

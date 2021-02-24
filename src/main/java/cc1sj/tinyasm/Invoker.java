@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 public interface Invoker {
 	@SuppressWarnings("unchecked")
-	default Instance invoke(Consumer<MethodCodeAdv> p0) {
+	default Instance Invoke(Consumer<MethodCodeAdv> p0) {
 		return invoke(new Consumer[] { p0 });
 	}
 
@@ -34,5 +34,5 @@ public interface Invoker {
 
 	Instance invoke(String... varname);
 
-	Instance invoke();
+	Instance Invoke();
 }

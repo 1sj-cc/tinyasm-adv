@@ -47,18 +47,18 @@ public class MethodCodeInvokeTest extends TestBase {
 			mv.define("ls", Clazz.of(List.class.getName(), TypeUtils.classnamesOf(genericParameterClazz)));
 
 			mv.line().setConst("i", 10);
-			mv.line().clazz(Long.class).call("valueOf").parameter(long.class).reTurn(Long.class).invoke(p->p.LOADConst(Long.valueOf(10L))).setTo("l");
+			mv.line().clazz(Long.class).call("valueOf").parameter(long.class).Return(Long.class).Invoke(p->p.LOADConst(Long.valueOf(10L))).setTo("l");
 
-			mv.line().clazz(String.class).call("valueOf").parameter(int.class).reTurn(String.class).invoke("i").setTo("s");
+			mv.line().clazz(String.class).call("valueOf").parameter(int.class).Return(String.class).invoke("i").setTo("s");
 			
-			mv.line().init(StringBuilder.class).virtual("append").reTurn(StringBuilder.class).invoke("s")
-				.virtual("append").parameter(int.class).reTurn(StringBuilder.class).invoke("i")
-				.virtual("append").parameter(Object.class).reTurn(StringBuilder.class).invoke("l")
-				.virtual("toString").reTurn(String.class).invoke().setTo("s");
+			mv.line().init(StringBuilder.class).Virtual("append").Return(StringBuilder.class).invoke("s")
+				.Virtual("append").parameter(int.class).Return(StringBuilder.class).invoke("i")
+				.Virtual("append").parameter(Object.class).Return(StringBuilder.class).invoke("l")
+				.Virtual("toString").Return(String.class).Invoke().setTo("s");
 			
 			mv.line().init(ArrayList.class).setTo("ls");
-			mv.line().load("ls").inter("add").parameter(Object.class).reTurn(boolean.class).invoke(p->p.LOADConst("first")).pop();
-			mv.line().load("ls").inter("add").parameter(Object.class).reTurn(boolean.class).invoke(p->p.LOADConst("second")).pop();
+			mv.line().Var("ls").Interface("add").parameter(Object.class).Return(boolean.class).Invoke(p->p.LOADConst("first")).pop();
+			mv.line().Var("ls").Interface("add").parameter(Object.class).Return(boolean.class).Invoke(p->p.LOADConst("second")).pop();
 
 
 			mv.line().returnVoid();
@@ -98,28 +98,28 @@ public class MethodCodeInvokeTest extends TestBase {
 			mv.define("kL", Long.class);
 			mv.line().set("kL", p -> p.loadConst(0L).boxWhenNeed());
 			// L = kl;
-			mv.line().set("L", p -> p.load("kl").boxWhenNeed());
+			mv.line().set("L", p -> p.Var("kl").boxWhenNeed());
 			// l = kL;
-			mv.line().set("l", p -> p.load("kL").unbox());
+			mv.line().set("l", p -> p.Var("kL").unbox());
 
 			// invokeVoid();
-			mv.line().loadThis().virtual("invokeVoid").invokeVoid();
+			mv.line().loadThis().Virtual("invokeVoid").InvokeVoid();
 			// invokeVoid(i);
-			mv.line().loadThis().virtual("invokeVoid").invokeVoid("i");
+			mv.line().loadThis().Virtual("invokeVoid").InvokeVoid("i");
 			// invokeVoid(j, i);
-			mv.line().loadThis().virtual("invokeVoid").invokeVoid("j", "i");
+			mv.line().loadThis().Virtual("invokeVoid").InvokeVoid("j", "i");
 			// invokeVoid(i);
-			mv.line().loadThis().virtual("invokeVoid").parameter(int.class).invokeVoid("i");
+			mv.line().loadThis().Virtual("invokeVoid").parameter(int.class).InvokeVoid("i");
 			// invokeVoid(j, i);
-			mv.line().loadThis().virtual("invokeVoid").parameter(int.class).parameter(int.class).invokeVoid("j", "i");
+			mv.line().loadThis().Virtual("invokeVoid").parameter(int.class).parameter(int.class).InvokeVoid("j", "i");
 			// invokeVoid(i);
-			mv.line().loadThis().virtual("invokeVoid").invokeVoid(p -> p.loadThisField("i"));
+			mv.line().loadThis().Virtual("invokeVoid").invokeVoid(p -> p.loadThisField("i"));
 			// invokeVoid(j, i);
-			mv.line().loadThis().virtual("invokeVoid").invokeVoid(p -> p.loadThisField("j"), p -> p.loadThisField("i"));
+			mv.line().loadThis().Virtual("invokeVoid").invokeVoid(p -> p.loadThisField("j"), p -> p.loadThisField("i"));
 			// invokeVoid(i);
-			mv.line().loadThis().virtual("invokeVoid").parameter(int.class).invokeVoid(p -> p.loadThisField("i"));
+			mv.line().loadThis().Virtual("invokeVoid").parameter(int.class).invokeVoid(p -> p.loadThisField("i"));
 			// invokeVoid(j, i);
-			mv.line().loadThis().virtual("invokeVoid").parameter(int.class).parameter(int.class).invokeVoid(p -> p.loadThisField("j"), p -> p.loadThisField("i"));
+			mv.line().loadThis().Virtual("invokeVoid").parameter(int.class).parameter(int.class).invokeVoid(p -> p.loadThisField("j"), p -> p.loadThisField("i"));
 
 			mv.line().returnVoid(); 
 		});
@@ -154,64 +154,64 @@ public class MethodCodeInvokeTest extends TestBase {
 			mv.line().set("str", p -> p.loadConst("str"));
 			// Boolean Z = z;
 			mv.define("Z", Boolean.class);
-			mv.line().set("Z", p -> p.load("z").boxWhenNeed());
+			mv.line().set("Z", p -> p.Var("z").boxWhenNeed());
 			// Byte B = b;
 			mv.define("B", Byte.class);
-			mv.line().set("B", p -> p.load("b").boxWhenNeed());
+			mv.line().set("B", p -> p.Var("b").boxWhenNeed());
 			// Character C =c;
 			mv.define("C", Character.class);
-			mv.line().set("C", p -> p.load("c").boxWhenNeed());
+			mv.line().set("C", p -> p.Var("c").boxWhenNeed());
 			// Short S=s;
 			mv.define("S", Short.class);
-			mv.line().set("S", p -> p.load("s").boxWhenNeed());
+			mv.line().set("S", p -> p.Var("s").boxWhenNeed());
 			// Integer I=i;
 			mv.define("I", Integer.class);
-			mv.line().set("I", p -> p.load("i").boxWhenNeed());
+			mv.line().set("I", p -> p.Var("i").boxWhenNeed());
 			// Long L=l;
 			mv.define("L", Long.class);
-			mv.line().set("L", p -> p.load("l").boxWhenNeed());
+			mv.line().set("L", p -> p.Var("l").boxWhenNeed());
 			// Float F=f;
 			mv.define("F", Float.class);
-			mv.line().set("F", p -> p.load("f").boxWhenNeed());
+			mv.line().set("F", p -> p.Var("f").boxWhenNeed());
 			// Double D=d;
 			mv.define("D", Double.class);
-			mv.line().set("D", p -> p.load("d").boxWhenNeed());
+			mv.line().set("D", p -> p.Var("d").boxWhenNeed());
 			// String STR = str;
 			mv.define("STR", String.class);
-			mv.line().set("STR", p -> p.load("str").boxWhenNeed());
+			mv.line().set("STR", p -> p.Var("str").boxWhenNeed());
 			
 			// z=Z;
-			mv.line().set("z", p -> p.load("Z").unbox());
+			mv.line().set("z", p -> p.Var("Z").unbox());
 			// b = B;
-			mv.line().set("b", p -> p.load("B").unbox());
+			mv.line().set("b", p -> p.Var("B").unbox());
 			// c = C;
-			mv.line().set("c", p -> p.load("C").unbox());
+			mv.line().set("c", p -> p.Var("C").unbox());
 			// s = S;
-			mv.line().set("s", p -> p.load("S").unbox());
+			mv.line().set("s", p -> p.Var("S").unbox());
 			// i = I;
-			mv.line().set("i", p -> p.load("I").unbox());
+			mv.line().set("i", p -> p.Var("I").unbox());
 			// l= L;
-			mv.line().set("l", p -> p.load("L").unbox());
+			mv.line().set("l", p -> p.Var("L").unbox());
 			// f = F;
-			mv.line().set("f", p -> p.load("F").unbox());
+			mv.line().set("f", p -> p.Var("F").unbox());
 			// d = D;
-			mv.line().set("d", p -> p.load("D").unbox());
+			mv.line().set("d", p -> p.Var("D").unbox());
 			//str = STR;
-			mv.line().set("str", p -> p.load("STR").unbox());
+			mv.line().set("str", p -> p.Var("STR").unbox());
 			mv.line().returnVoid();
 		});
 		cw.method("invokeVoid").friendly(mv -> {
 			mv.define("k", int.class);
 			mv.line().setConst("k", 10);
-			mv.line().set("i", p -> p.load("k").add("i"));
+			mv.line().set("i", p -> p.Var("k").add("i"));
 			mv.line().returnVoid();
 		});
 		cw.method("invokeVoid").parameter("p1", int.class).friendly(mv -> {
-			mv.line().set("i", p -> p.load("p1").add("i"));
+			mv.line().set("i", p -> p.Var("p1").add("i"));
 			mv.line().returnVoid();
 		});
 		cw.method("invokeVoid").parameter("p1", int.class).parameter("p2", int.class).friendly(mv -> {
-			mv.line().set("i", p -> p.load("p1").add("i").add("p2"));
+			mv.line().set("i", p -> p.Var("p1").add("i").add("p2"));
 			mv.line().returnVoid();
 		});
 //

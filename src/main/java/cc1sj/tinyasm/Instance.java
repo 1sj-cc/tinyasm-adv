@@ -3,9 +3,9 @@ package cc1sj.tinyasm;
 import java.util.function.Consumer;
 
 public interface Instance {
-	InvokerPrepare inter(String methodName);
+	InvokerPrepare Interface(String methodName);
 
-	InvokerPrepare virtual(String methodName);
+	InvokerPrepare Virtual(String methodName);
 
 	InvokerPrepare special(String methodName);
 

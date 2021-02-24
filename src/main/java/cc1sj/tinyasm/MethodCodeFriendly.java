@@ -79,7 +79,7 @@ public interface MethodCodeFriendly {
 
 	ClazzReference clazz(String clazz);
 
-	Instance load(String varname);
+	Instance Var(String varname);
 
 	void ifTrue(Consumer<MethodCodeAdv> block);
 

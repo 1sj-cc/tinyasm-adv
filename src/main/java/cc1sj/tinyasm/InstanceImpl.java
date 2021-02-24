@@ -16,12 +16,12 @@ public class InstanceImpl implements Instance {
 	}
 
 	@Override
-	public InvokerPrepare inter(String methodName) {
+	public InvokerPrepare Interface(String methodName) {
 		return new InvokerImpl(mv, Opcodes.INVOKEINTERFACE, instanceType, methodName);
 	}
 
 	@Override
-	public InvokerPrepare virtual(String methodName) {
+	public InvokerPrepare Virtual(String methodName) {
 		return new InvokerImpl(mv, Opcodes.INVOKEVIRTUAL, instanceType, methodName);
 	}
 
@@ -88,7 +88,7 @@ public class InstanceImpl implements Instance {
 
 	@Override
 	public Instance add(String varname) {
-		mv.load(varname);
+		mv.Var(varname);
 		mv.ADD();
 		return mv.topInstance();
 	}

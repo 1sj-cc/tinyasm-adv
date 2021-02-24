@@ -45,11 +45,11 @@ public interface InvokerPrepare {
 
 	void invokeVoid(Consumer<MethodCodeAdv>[] invocations);
 
-	void invokeVoid(String... varname);
+	void InvokeVoid(String... varname);
 
 	Invoker returnObject(Clazz returnClazz);
 
-	default Invoker reTurn(Class<?> returnClazz) {
+	default Invoker Return(Class<?> returnClazz) {
 		return returnObject(Clazz.of(returnClazz));
 	}
 
