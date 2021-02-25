@@ -84,6 +84,8 @@ class MethodHeaderBuilder implements MethodHeader {
 //		return this;
 //	}
 
+	boolean entered = false;
+
 	@Override
 	public MethodCode begin() {
 		prapareMethodDefination();
@@ -93,7 +95,10 @@ class MethodHeaderBuilder implements MethodHeader {
 		preapareMethodWithThis();
 		preapareMethodWithParams();
 
-		return makeCode(mv);
+		MethodCode code = makeCode(mv);
+		if (!entered) TinyAsmBuilder.enterCode(code);
+		entered = true;
+		return code;
 	}
 
 	@Override
@@ -122,8 +127,11 @@ class MethodHeaderBuilder implements MethodHeader {
 		return this;
 	}
 
+	boolean exited = false;
 	public void end() {
 		finishMethod();
+		if (!exited) TinyAsmBuilder.exitCode();
+		exited = true;
 	}
 
 	protected void finishMethod() {
