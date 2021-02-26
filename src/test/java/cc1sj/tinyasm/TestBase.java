@@ -12,6 +12,8 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.util.ASMifier;
 import org.objectweb.asm.util.TraceClassVisitor;
 
+import cc1sj.tinyasm.util.TinyASMifier;
+
 public class TestBase {
 
 	public static String toString(byte[] code) {
@@ -19,7 +21,7 @@ public class TestBase {
 			ClassReader cr = new ClassReader(code);
 			StringWriter sw = new StringWriter();
 			PrintWriter pw = new PrintWriter(sw);
-			ClassVisitor visitor = new TraceClassVisitor(null, new ASMifier(), pw);
+			ClassVisitor visitor = new TraceClassVisitor(null, new TinyASMifier(), pw);
 			cr.accept(visitor, ClassReader.EXPAND_FRAMES);
 			return skipToString(excludeLineNumber(sw.toString()));
 		} catch (Exception e) {
@@ -32,7 +34,7 @@ public class TestBase {
 			ClassReader cr = new ClassReader(clazz.getName());
 			StringWriter sw = new StringWriter();
 			PrintWriter pw = new PrintWriter(sw);
-			ClassVisitor visitor = new TraceClassVisitor(null, new ASMifier(), pw);
+			ClassVisitor visitor = new TraceClassVisitor(null, new TinyASMifier(), pw);
 			cr.accept(visitor, ClassReader.EXPAND_FRAMES);
 			return skipToString(excludeLineNumber(sw.toString()));
 		} catch (Exception e) {
@@ -45,7 +47,7 @@ public class TestBase {
 			ClassReader cr = new ClassReader(className);
 			StringWriter sw = new StringWriter();
 			PrintWriter pw = new PrintWriter(sw);
-			ClassVisitor visitor = new TraceClassVisitor(null, new ASMifier(), pw);
+			ClassVisitor visitor = new TraceClassVisitor(null, new TinyASMifier(), pw);
 			cr.accept(visitor, ClassReader.EXPAND_FRAMES);
 			return skipToString(excludeLineNumber(sw.toString()));
 		} catch (IOException e) {
