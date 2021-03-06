@@ -42,9 +42,9 @@ public class MethodCodeASMSimpleTest extends TestBase {
 		cw.method(int.class, "getField").code(mc->{
 			mc.define("x", int.class);
 			mc.LINE(14);mc.LOAD("this");
-			mc.GET_THIS_FIELD("b");
+			mc.GETFIELD_OF_THIS("b");
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("i");
+			mc.GETFIELD_OF_THIS("i");
 			mc.ADD();
 			mc.STORE("x");
 			mc.LINE(15);mc.LOAD("x");
@@ -58,22 +58,22 @@ public class MethodCodeASMSimpleTest extends TestBase {
 			mc.loadThisField("c");
 			mc.ADD();
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("s");
+			mc.GETFIELD_OF_THIS("s");
 			mc.ADD();
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("i");
+			mc.GETFIELD_OF_THIS("i");
 			mc.ADD();
 			mc.CONVERTTO(long.class);
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("l");
+			mc.GETFIELD_OF_THIS("l");
 			mc.ADD();
 			mc.CONVERTTO(float.class);
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("f");
+			mc.GETFIELD_OF_THIS("f");
 			mc.ADD();
 			mc.CONVERTTO(double.class);
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("d");
+			mc.GETFIELD_OF_THIS("d");
 			mc.ADD();
 			mc.CONVERTTO(int.class);
 			mc.STORE("x");
@@ -114,27 +114,27 @@ public class MethodCodeASMSimpleTest extends TestBase {
 			mc.PUTFIELD_OF_THIS("str");
 			
 			mc.LINE(32);mc.LOAD("this");
-			mc.GET_THIS_FIELD("b");
+			mc.GETFIELD_OF_THIS("b");
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("c");
+			mc.GETFIELD_OF_THIS("c");
 			mc.ADD();
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("s");
+			mc.GETFIELD_OF_THIS("s");
 			mc.ADD();
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("i");
+			mc.GETFIELD_OF_THIS("i");
 			mc.ADD();
 			mc.CONVERTTO(long.class);
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("l");
+			mc.GETFIELD_OF_THIS("l");
 			mc.ADD();
 			mc.CONVERTTO(float.class);
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("f");
+			mc.GETFIELD_OF_THIS("f");
 			mc.ADD();
 			mc.CONVERTTO(double.class);
 			mc.LOAD("this");
-			mc.GET_THIS_FIELD("d");
+			mc.GETFIELD_OF_THIS("d");
 			mc.ADD();
 
 			mc.CONVERTTO(int.class);
@@ -200,7 +200,7 @@ public class MethodCodeASMSimpleTest extends TestBase {
 			mc.PUTFIELD_OF_THIS("b");
 			
 			mc.LINE(i++);mc.LOAD("this");
-			mc.GET_THIS_FIELD("b");
+			mc.GETFIELD_OF_THIS("b");
 			mc.RETURNTop();
 
 		});
@@ -220,10 +220,10 @@ public class MethodCodeASMSimpleTest extends TestBase {
 			mc.LOADConstByte(10);
 			mc.PUTFIELD_OF_THIS("b");
 			mc.LINE();mc.LOAD_THIS();
-			mc.GET_THIS_FIELD("b");
+			mc.GETFIELD_OF_THIS("b");
 			mc.STORE("x");
 			mc.LINE();mc.LOAD_THIS();
-			mc.GET_THIS_FIELD("b");
+			mc.GETFIELD_OF_THIS("b");
 			mc.LOAD("x");
 			mc.ADD();
 			mc.CONVERTTO(byte.class);
