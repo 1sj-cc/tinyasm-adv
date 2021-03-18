@@ -21,7 +21,7 @@ public class MethodCodeFriendlyMathTest extends TestBase {
 	@Test
 	public void testMath() throws Exception {
 		String clazz = MethodCodeFriendlyMathSample.class.getName();
-		ClassBody cw = ClassBuilder.make(clazz).body();
+		ClassBody cw = ClassBuilder.class_(clazz).body();
 		cw.publicMethod("<init>").friendly(mc -> {
 			mc.line(3);
 			mc.INIT_OBJECT();

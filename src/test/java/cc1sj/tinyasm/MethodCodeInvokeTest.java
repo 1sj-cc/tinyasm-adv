@@ -27,9 +27,9 @@ public class MethodCodeInvokeTest extends TestBase {
 
 	@Test
 	public void testMath() throws Exception {
-		ClassBody cw = ClassBuilder.make(clazz).body();
+		ClassBody cw = ClassBuilder.class_(clazz).body();
 
-		cw.field("i", int.class);
+		cw.privateField("i", int.class);
 
 		cw.method("<init>").friendly(mv -> {
 			mv.line().initThis();
@@ -39,7 +39,7 @@ public class MethodCodeInvokeTest extends TestBase {
 		});
 
 		// @formatter:off
-		cw.method("method").ACC_PUBLIC().ACC_STATIC().parameter("data", String.class).friendly(mv -> {
+		cw.method("method").public_().static_().parameter("data", String.class).friendly(mv -> {
 			mv.define("i", int.class);
 			mv.define("l", Long.class);
 			mv.define("s", String.class);
@@ -74,12 +74,12 @@ public class MethodCodeInvokeTest extends TestBase {
 	@Test
 	public void testInvoke() throws Exception {
 		String clazz = InvokeSample.class.getName();
-		ClassBody cw = ClassBuilder.make(clazz).body();
+		ClassBody cw = ClassBuilder.class_(clazz).body();
 
-		cw.field("i", int.class);
-		cw.field("j", int.class);
-		cw.field("l", long.class);
-		cw.field("L", Long.class);
+		cw.privateField("i", int.class);
+		cw.privateField("j", int.class);
+		cw.privateField("l", long.class);
+		cw.privateField("L", Long.class);
 
 		cw.method("<init>").friendly(mv -> {
 			mv.line().initThis();

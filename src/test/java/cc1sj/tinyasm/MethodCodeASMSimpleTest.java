@@ -21,17 +21,17 @@ public class MethodCodeASMSimpleTest extends TestBase {
 	@Test
 	public void testMath() throws Exception {
 		String clazz = MethodCodeASMSimpleSample.class.getName();
-		ClassBody cw = ClassBuilder.make(clazz).body();
+		ClassBody cw = ClassBuilder.class_(clazz).body();
 
 		// @formatter:off
-		cw.field("b",  byte.class);
-		cw.field("c", char.class);
-		cw.field("s",short.class);
-		cw.field("i",int.class);
-		cw.field("l",long.class);
-		cw.field("f",float.class);
-		cw.field("d",double.class);
-		cw.field("str",String.class);
+		cw.privateField("b",  byte.class);
+		cw.privateField("c", char.class);
+		cw.privateField("s",short.class);
+		cw.privateField("i",int.class);
+		cw.privateField("l",long.class);
+		cw.privateField("f",float.class);
+		cw.privateField("d",double.class);
+		cw.privateField("str",String.class);
 		
 		cw.publicMethod("<init>").code(mc -> {
 			mc.LINE(3);

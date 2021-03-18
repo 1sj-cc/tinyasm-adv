@@ -26,9 +26,9 @@ public class MethodCodeMethodCallerSimpleTest extends TestBase {
 
 	@Test
 	public void testMath() throws Exception {
-		ClassBody cw = ClassBuilder.make(clazz).body();
+		ClassBody cw = ClassBuilder.class_(clazz).body();
 
-		cw.field("i", int.class);
+		cw.privateField("i", int.class);
 
 		cw.method("<init>").friendly(mv -> {
 			mv.line().initThis();
@@ -38,7 +38,7 @@ public class MethodCodeMethodCallerSimpleTest extends TestBase {
 
 		});
 
-		cw.method("method").ACC_PUBLIC().ACC_STATIC().parameter("data", String.class).friendly(mv -> {
+		cw.method("method").public_().static_().parameter("data", String.class).friendly(mv -> {
 			mv.define("i", int.class);
 			mv.define("l", Long.class);
 			mv.define("s", String.class);
